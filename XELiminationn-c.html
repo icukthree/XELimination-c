@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>X€Limination©</title> 
+  <link rel="stylesheet" href="styles.css"> <!-- Menghubungkan ke file CSS --> 
+ <style type="text/css" id="dcoder_stylesheet">@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #000000; /* Latar belakang hitam */
+    color: #ffffff; /* Font putih */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+h1 {
+    font-family: 'Playfair Display', serif; /* Font yang lebih elegan */
+    font-size: 3em; /* Ukuran font lebih besar */
+}
+.info {
+    margin: 20px;
+    text-align: center;
+}
+.task-button {
+    margin: 10px;
+    padding: 15px 25px;
+    background-color: #007bff;
+    color: white;
+    border: 2px solid white; /* Outline putih */
+    border-radius: 5px;
+    cursor: pointer;
+}
+.task-button:hover {
+    background-color: #0056b3;
+}
+.task-group {
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}</style></head> 
+ <body> 
+  <h1>X€Limination©</h1> 
+  <div class="info"> 
+   <p>Total Poin: <span id="total-points">0</span></p> 
+   <p>Total Tugas Selesai: <span id="total-tasks">0</span></p> 
+  </div> 
+  <div id="task-buttons"> <!-- Buttons will be generated here --> 
+  </div> 
+  <script src="scripts.js"></script> <!-- Menghubungkan ke file JS --> 
+ 
+<script type="text/javascript" id="dcoder_script">const tasks = [
+    { group: 'Group 1', links: Array.from({ length: 60 }, (_, i) => `https://example.com/task${i + 1}`) } // Gabungkan semua tugas ke dalam satu grup
+];
+
+let totalPoints = 0;
+let totalTasks = 0;
+
+const taskButtonsContainer = document.getElementById('task-buttons');
+const totalPointsElement = document.getElementById('total-points');
+const totalTasksElement = document.getElementById('total-tasks');
+
+tasks.forEach(taskGroup => {
+    const groupDiv = document.createElement('div');
+    groupDiv.className = 'task-group';
+    taskGroup.links.forEach(link => {
+        const button = document.createElement('button');
+        button.className = 'task-button';
+        button.textContent = `Complete Task (${taskGroup.group})`;
+        button.onclick = () => {
+            window.open(link, '_blank');
+            totalPoints += 10; // Misalnya, setiap tugas bernilai 10 poin
+            totalTasks += 1;
+            totalPointsElement.textContent = totalPoints;
+            totalTasksElement.textContent = totalTasks;
+        };
+        groupDiv.appendChild(button);
+    });
+    taskButtonsContainer.appendChild(groupDiv);
+});</script></body></html>
